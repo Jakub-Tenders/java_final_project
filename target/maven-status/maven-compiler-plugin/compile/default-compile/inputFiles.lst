@@ -2,6 +2,7 @@ C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\ai
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Airport.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Client.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\User.java
+C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\controller\PlaneController.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Plane.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Employee.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\service\UserService.java
@@ -9,5 +10,7 @@ C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\ai
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Book.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\Flight.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\config\DBConnection.java
+C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\dao\PlaneDAO.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\model\MilesReward.java
 C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\controller\UserController.java
+C:\Users\mohit\Desktop\Bsc\S3\java\java_final_project\src\main\java\com\epita\airline\service\PlaneService.java
