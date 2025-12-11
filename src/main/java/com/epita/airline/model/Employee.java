@@ -1,15 +1,31 @@
 package com.epita.airline.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Employee {
-    private Long numEmp;
-    private String profession;
-    private String title;
-    private Long idUser; // Foreign key to User
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String position;
+
+    public Employee() {}
+
+    public Employee(int id, String firstName, String lastName, String email, String position) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.position = position;
+    }
+
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPosition() { return position; }
+    public void setPosition(String position) { this.position = position; }
 }
