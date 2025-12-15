@@ -3,6 +3,8 @@ package com.epita.airline.controller;
 import com.epita.airline.model.Airport;
 import com.epita.airline.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +18,7 @@ public class AirportController {
 
     @GetMapping
     public ResponseEntity<List<Airport>> getAllAirports() {
-        List<Airport> airports = airportService.getAllAirports();
+        List<Airport> airports = airportService.getAll();
         return new ResponseEntity<>(airports, HttpStatus.OK);
     }
 
