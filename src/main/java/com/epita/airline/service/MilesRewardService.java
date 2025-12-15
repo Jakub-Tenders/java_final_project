@@ -22,4 +22,8 @@ public class MilesRewardService {
     public List<MilesReward> getAllMilesRewards() {
         return milesRewardDAO.findAll();
     }
+
+    public MilesReward getMilesRewardById(int id) {
+        return milesRewardDAO.findById(id);
+    }
 }

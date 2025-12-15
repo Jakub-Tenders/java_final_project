@@ -5,6 +5,8 @@ import com.epita.airline.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookingService {
 
@@ -22,5 +24,12 @@ public class BookingService {
         }
 
         return bookingDAO.save(booking);
+    }
+    public List<Booking> getAllBookings() {
+        return bookingDAO.findAll();
+    }
+
+    public Booking getBookingById(Integer id) {
+        return bookingDAO.findById(id);
     }
 }

@@ -14,6 +14,17 @@ public class EmployeeDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    public Employee findById(int id) {
+        String sql = "SELECT * FROM employee WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new RowMapper<Employee>() {
+            @Override
+            public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"),
+                        rs.getString("email"), rs.getString("position"));
+            }
+        }, id);
+    }
+
     public EmployeeDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

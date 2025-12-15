@@ -22,4 +22,8 @@ public class ClientService {
     public List<Client> getAllClients() {
         return clientDAO.findAll();
     }
+
+    public Client getClientById(int id) {
+        return clientDAO.findById(id);
+    }
 }

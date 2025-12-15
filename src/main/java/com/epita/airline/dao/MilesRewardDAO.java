@@ -14,6 +14,21 @@ public class MilesRewardDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    public MilesReward findById(int id) {
+        String sql = "SELECT * FROM miles_reward WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new RowMapper<MilesReward>() {
+            @Override
+            public MilesReward mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new MilesReward(
+                        rs.getInt("id"),
+                        rs.getInt("client_id"),
+                        rs.getInt("miles"),
+                        rs.getTimestamp("earned_date").toLocalDateTime()
+                );
+            }
+        }, id);
+    }
+
     public MilesRewardDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

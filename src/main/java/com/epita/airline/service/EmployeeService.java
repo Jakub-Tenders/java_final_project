@@ -22,4 +22,8 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeDAO.findAll();
     }
+
+    public Employee getEmployeeById(int id) {
+        return employeeDAO.findById(id);
+    }
 }

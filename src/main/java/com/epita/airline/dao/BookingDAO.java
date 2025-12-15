@@ -12,12 +12,39 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Repository
 public class BookingDAO {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public Booking findById(Integer id) {
+        String sql = "SELECT * FROM booking WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
+            Booking b = new Booking();
+            b.setId(rs.getInt("id"));
+            b.setUserId(rs.getInt("user_id"));
+            b.setFlightId(rs.getInt("flight_id"));
+            b.setSeatNumber(rs.getString("seat_number"));
+            b.setBookingTime(rs.getTimestamp("booking_time").toLocalDateTime());
+            return b;
+        }, id);
+    }
+
+    public List<Booking> findAll() {
+        String sql = "SELECT * FROM booking";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+            Booking b = new Booking();
+            b.setId(rs.getInt("id"));
+            b.setUserId(rs.getInt("user_id"));
+            b.setFlightId(rs.getInt("flight_id"));
+            b.setSeatNumber(rs.getString("seat_number"));
+            b.setBookingTime(rs.getTimestamp("booking_time").toLocalDateTime());
+            return b;
+        });
+    }
 
     public Booking save(Booking booking) {
         String sql = "INSERT INTO booking(user_id, flight_id, seat_number, booking_time) VALUES (?, ?, ?, ?)";
@@ -39,5 +66,6 @@ public class BookingDAO {
 
         booking.setId(keyHolder.getKey().intValue());
         return booking;
+
     }
 }

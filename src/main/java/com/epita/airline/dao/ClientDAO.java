@@ -14,6 +14,17 @@ public class ClientDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    public Client findById(int id) {
+        String sql = "SELECT * FROM client WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new RowMapper<Client>() {
+            @Override
+            public Client mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Client(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"),
+                        rs.getString("email"), rs.getString("phone"));
+            }
+        }, id);
+    }
+
     public ClientDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
