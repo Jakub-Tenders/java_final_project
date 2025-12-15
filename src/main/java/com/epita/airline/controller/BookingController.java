@@ -22,4 +22,14 @@ public class BookingController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping
+    public List<Booking> getAllBookings() {
+        return bookingService.getAllBookings();
+    }
+
+    @GetMapping("/{id}")
+    public Booking getBookingById(@PathVariable Integer id) {
+        return bookingService.getBookingById(id);
+    }
 }

@@ -25,4 +25,9 @@ public class ClientController {
     public List<Client> getClients() {
         return clientService.getAllClients();
     }
+
+    @GetMapping("/{id}")
+    public Client getClientById(@PathVariable int id) {
+        return clientService.getClientById(id);
+    }
 }

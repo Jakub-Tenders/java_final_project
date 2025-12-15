@@ -25,4 +25,9 @@ public class MilesRewardController {
     public List<MilesReward> getMilesRewards() {
         return milesRewardService.getAllMilesRewards();
     }
+
+    @GetMapping("/{id}")
+    public MilesReward getMilesRewardById(@PathVariable int id) {
+        return milesRewardService.getMilesRewardById(id);
+    }
 }

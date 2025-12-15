@@ -15,8 +15,9 @@ public class AirportController {
     private AirportService airportService;
 
     @GetMapping
-    public List<Airport> getAll() {
-        return airportService.getAll();
+    public ResponseEntity<List<Airport>> getAllAirports() {
+        List<Airport> airports = airportService.getAllAirports();
+        return new ResponseEntity<>(airports, HttpStatus.OK);
     }
 
     @PostMapping
