@@ -16,13 +16,18 @@ public class UserDAO {
 
     private RowMapper<User> userMapper = (rs, rowNum) -> {
         User u = new User();
-        u.setIdUser(rs.getLong("id_user"));
+        u.setId(rs.getLong("id"));
         u.setFirstname(rs.getString("firstname"));
         u.setLastname(rs.getString("lastname"));
         u.setAddress(rs.getString("address"));
         u.setEmail(rs.getString("email"));
         u.setPhone(rs.getString("phone"));
-        u.setBirthdate(rs.getDate("birthdate").toLocalDate());
+        if (rs.getDate("birthdate") != null) {
+            u.setBirthdate(rs.getDate("birthdate").toLocalDate());
+        }
+        u.setUsername(rs.getString("username"));
+        u.setPassword(rs.getString("password"));
+        u.setRole(rs.getString("role"));
         return u;
     };
 
@@ -32,24 +37,44 @@ public class UserDAO {
 
     public User findById(Long id) {
         return jdbc.queryForObject(
-                "SELECT * FROM users WHERE id_user = ?",
+                "SELECT * FROM users WHERE id = ?",
                 userMapper,
                 id
         );
     }
 
     public int save(User u) {
-        return jdbc.update("INSERT INTO users(firstname, lastname, address, email, phone, birthdate) VALUES (?, ?, ?, ?, ?, ?)",
-                u.getFirstname(), u.getLastname(), u.getAddress(), u.getEmail(), u.getPhone(), u.getBirthdate());
+        return jdbc.update(
+            "INSERT INTO users (firstname, lastname, address, email, phone, birthdate, username, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            u.getFirstname(),
+            u.getLastname(),
+            u.getAddress(),
+            u.getEmail(),
+            u.getPhone(),
+            u.getBirthdate(),
+            u.getUsername(),
+            u.getPassword(),
+            u.getRole()
+        );
     }
 
     public int update(Long id, User u) {
-        return jdbc.update("UPDATE users SET firstname=?, lastname=?, address=?, email=?, phone=?, birthdate=? WHERE id_user=?",
-                u.getFirstname(), u.getLastname(), u.getAddress(),
-                u.getEmail(), u.getPhone(), u.getBirthdate(), id);
+        return jdbc.update(
+            "UPDATE users SET firstname=?, lastname=?, address=?, email=?, phone=?, birthdate=?, username=?, password=?, role=? WHERE id=?",
+            u.getFirstname(),
+            u.getLastname(),
+            u.getAddress(),
+            u.getEmail(),
+            u.getPhone(),
+            u.getBirthdate(),
+            u.getUsername(),
+            u.getPassword(),
+            u.getRole(),
+            id
+        );
     }
 
     public int delete(Long id) {
-        return jdbc.update("DELETE FROM users WHERE id_user=?", id);
+        return jdbc.update("DELETE FROM users WHERE id=?", id);
     }
 }

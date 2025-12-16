@@ -13,22 +13,29 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
+    // Get all users
     public List<User> getAllUsers() {
         return userDAO.findAll();
     }
 
-    public User getUser(Long id) {
+    // Get user by ID
+    public User getUserById(Long id) {
         return userDAO.findById(id);
     }
 
-    public void addUser(User user) {
+    // Add a new user
+    public User addUser(User user) {
         userDAO.save(user);
+        return user; // Return the same user object
     }
 
-    public void updateUser(Long id, User user) {
+    // Update an existing user
+    public User updateUser(Long id, User user) {
         userDAO.update(id, user);
+        return user;
     }
 
+    // Delete a user
     public void deleteUser(Long id) {
         userDAO.delete(id);
     }
